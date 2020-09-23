@@ -6,7 +6,7 @@
 #include "GameFramework/Actor.h"
 #include "WeaponActor.generated.h"
 
-UCLASS()
+UCLASS(Abstract)
 class PROJETINTEGRATION_API AWeaponActor : public AActor
 {
 	GENERATED_BODY()
@@ -14,6 +14,15 @@ class PROJETINTEGRATION_API AWeaponActor : public AActor
 public:	
 	// Sets default values for this actor's properties
 	AWeaponActor();
+
+	UPROPERTY(EditAnywhere,BlueprintReadOnly)
+		int attackStrength;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		USkeletalMesh weaponMesh;
+	
+	UFUNCTION(BlueprintCallable)
+	void attack(int attackStrength);
 
 protected:
 	// Called when the game starts or when spawned

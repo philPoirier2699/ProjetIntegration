@@ -32,10 +32,9 @@ AThirdPersonCharacter::AThirdPersonCharacter()
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
 	FollowCamera->bUsePawnControlRotation = false;
 	
-	
-	sprinting = false;
 	GetCharacterMovement()->MaxWalkSpeed = 300.0f;
 
+	sprinting = false;
 	weaponInUse = false;
 	
 }

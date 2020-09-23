@@ -27,8 +27,6 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
 		UCameraComponent* FollowCamera;
 
-	bool sprinting;
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Combat)
 		UAnimMontage* sheatheMontage;
 
@@ -43,6 +41,8 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Combat)
 		bool weaponInUse;
+
+	bool sprinting;
 
 	// Getter empeche la creation de blueprint runtime error
 	UFUNCTION(BlueprintCallable)
