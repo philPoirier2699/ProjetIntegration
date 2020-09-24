@@ -44,7 +44,6 @@ AThirdPersonCharacter::AThirdPersonCharacter()
 void AThirdPersonCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 // Called every frame
@@ -109,7 +108,6 @@ void AThirdPersonCharacter::Sprint()
 void AThirdPersonCharacter::UseWeapon()
 {
 	weaponInUse = !weaponInUse;
-
 
 	if(weaponInUse)
 	{
