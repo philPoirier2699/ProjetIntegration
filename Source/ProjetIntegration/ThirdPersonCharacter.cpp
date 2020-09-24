@@ -76,6 +76,9 @@ void AThirdPersonCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInp
 
 	PlayerInputComponent->BindAction("UseWeapon", IE_Pressed, this, &AThirdPersonCharacter::UseWeapon);
 
+	PlayerInputComponent->BindAction("Attack", IE_Pressed, this, &AThirdPersonCharacter::attackAnim);
+
+
 }
 
 void AThirdPersonCharacter::MoveForward(float Axis)
@@ -117,8 +120,12 @@ void AThirdPersonCharacter::UseWeapon()
 	{
 		ACharacter::PlayAnimMontage(sheatheMontage);
 	}
-		
+}
 
+void AThirdPersonCharacter::attackAnim()
+{
+	if(weaponInUse)
+		ACharacter::PlayAnimMontage(attackMontage);
 }
 
 

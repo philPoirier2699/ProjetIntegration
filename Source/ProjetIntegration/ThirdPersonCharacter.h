@@ -33,6 +33,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Combat)
 		UAnimMontage* withdrawMontage;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Combat)
+		UAnimMontage* attackMontage;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Combat)
 		FName playerWeaponHandSocket = TEXT("RightHandSocket");
 
@@ -58,8 +61,7 @@ public:
 	void MoveRight(float Axis);
 	void Sprint();
 	void UseWeapon();
-
-
+	void attackAnim();
 
 protected:
 	// Called when the game starts or when spawned
