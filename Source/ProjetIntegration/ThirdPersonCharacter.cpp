@@ -50,10 +50,16 @@ void AThirdPersonCharacter::BeginPlay()
 void AThirdPersonCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	// Draw and sheath sword
 	if(CanDrawSword)
 		AThirdPersonCharacter::GetMesh()->GetChildComponent(0)->AttachTo(AThirdPersonCharacter::GetMesh(), playerWeaponHandSocket);
 	else if (CanSheathSword)
 		AThirdPersonCharacter::GetMesh()->GetChildComponent(0)->AttachTo(AThirdPersonCharacter::GetMesh(), playerWeaponSheathSocket);
+
+	//Attack montage
+	if (attackWaiting == 0)
+		ACharacter::StopAnimMontage(attackMontage);
 }
 
 // Called to bind functionality to input
@@ -79,6 +85,11 @@ void AThirdPersonCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInp
 	PlayerInputComponent->BindAction("Attack", IE_Pressed, this, &AThirdPersonCharacter::attackAnim);
 
 
+}
+
+void AThirdPersonCharacter::AttackWaitingMinus()
+{
+	attackWaiting--;
 }
 
 void AThirdPersonCharacter::MoveForward(float Axis)
@@ -124,8 +135,12 @@ void AThirdPersonCharacter::UseWeapon()
 
 void AThirdPersonCharacter::attackAnim()
 {
-	if(weaponInUse)
-		ACharacter::PlayAnimMontage(attackMontage);
+	if (weaponInUse) 
+	{
+		if(attackWaiting == 0)
+			ACharacter::PlayAnimMontage(attackMontage);
+		attackWaiting++;
+	}
 }
 
 

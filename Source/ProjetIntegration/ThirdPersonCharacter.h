@@ -43,6 +43,9 @@ public:
 		FName playerWeaponSheathSocket = TEXT("SheathSocket");
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Combat)
+		int attackWaiting;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Combat)
 		bool CanDrawSword;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Combat)
@@ -56,6 +59,9 @@ public:
 	// Getter empeche la creation de blueprint runtime error
 	UFUNCTION(BlueprintCallable)
 		bool getWeaponInUse() const { return weaponInUse; }
+
+	UFUNCTION(BlueprintCallable)
+		void AttackWaitingMinus();
 
 	void MoveForward(float Axis);
 	void MoveRight(float Axis);
