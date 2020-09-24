@@ -92,6 +92,11 @@ void AThirdPersonCharacter::AttackWaitingMinus()
 	attackWaiting--;
 }
 
+void AThirdPersonCharacter::ResetAttackWaiting()
+{
+	attackWaiting = 0;
+}
+
 void AThirdPersonCharacter::MoveForward(float Axis)
 {
 	FRotator rotation = Controller->GetControlRotation();

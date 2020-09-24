@@ -63,6 +63,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 		void AttackWaitingMinus();
 
+	UFUNCTION(BlueprintCallable)
+		void ResetAttackWaiting();
+
 	void MoveForward(float Axis);
 	void MoveRight(float Axis);
 	void Sprint();
