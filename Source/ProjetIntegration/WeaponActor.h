@@ -19,10 +19,7 @@ public:
 		int attackStrength;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		USkeletalMesh weaponMesh;
-	
-	UFUNCTION(BlueprintCallable)
-	void attack(int attackStrength);
+		USkeletalMesh* weaponMesh;
 
 protected:
 	// Called when the game starts or when spawned

@@ -37,7 +37,13 @@ public:
 		FName playerWeaponHandSocket = TEXT("RightHandSocket");
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Combat)
-		FName playerWeaponSheatheSocket = TEXT("SheatheSocket");
+		FName playerWeaponSheathSocket = TEXT("SheathSocket");
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Combat)
+		bool CanDrawSword;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Combat)
+		bool CanSheathSword;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Combat)
 		bool weaponInUse;
