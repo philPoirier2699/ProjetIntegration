@@ -58,8 +58,11 @@ void AThirdPersonCharacter::Tick(float DeltaTime)
 		AThirdPersonCharacter::GetMesh()->GetChildComponent(0)->AttachTo(AThirdPersonCharacter::GetMesh(), playerWeaponSheathSocket);
 
 	//Attack montage
-	if (attackWaiting == 0)
+	if (attackWaiting == 0) 
+	{
 		ACharacter::StopAnimMontage(attackMontage);
+		GetCharacterMovement()->SetMovementMode(MOVE_Walking);
+	}
 }
 
 // Called to bind functionality to input
@@ -142,8 +145,13 @@ void AThirdPersonCharacter::attackAnim()
 {
 	if (weaponInUse) 
 	{
-		if(attackWaiting == 0)
+		if (attackWaiting == 0)
+		{
 			ACharacter::PlayAnimMontage(attackMontage);
+			GetCharacterMovement()->StopMovementImmediately();
+			GetCharacterMovement()->SetMovementMode(MOVE_None);
+		}
+			
 		attackWaiting++;
 	}
 }
