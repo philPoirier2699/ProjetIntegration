@@ -66,6 +66,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 		void ResetAttackWaiting();
 
+	UFUNCTION()
+		void OnOverlapBegin(UPrimitiveComponent* OverlappedComp,AActor* OtherActor,UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
 	void MoveForward(float Axis);
 	void MoveRight(float Axis);
 	void Sprint();

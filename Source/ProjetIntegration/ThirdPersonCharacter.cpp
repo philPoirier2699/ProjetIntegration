@@ -33,7 +33,7 @@ AThirdPersonCharacter::AThirdPersonCharacter()
 	FollowCamera->bUsePawnControlRotation = false;
 	
 	GetCharacterMovement()->MaxWalkSpeed = 300.0f;
-
+	AThirdPersonCharacter::GetMesh()->OnComponentBeginOverlap.AddDynamic(this, &AThirdPersonCharacter::OnOverlapBegin);
 	sprinting = false;
 	weaponInUse = false;
 	
@@ -44,6 +44,7 @@ AThirdPersonCharacter::AThirdPersonCharacter()
 void AThirdPersonCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+
 }
 
 // Called every frame
@@ -58,7 +59,7 @@ void AThirdPersonCharacter::Tick(float DeltaTime)
 		AThirdPersonCharacter::GetMesh()->GetChildComponent(0)->AttachTo(AThirdPersonCharacter::GetMesh(), playerWeaponSheathSocket);
 
 	//Attack montage
-	if (attackWaiting == 0) 
+	if (attackWaiting == 0 && !GetCharacterMovement()->IsFalling())
 	{
 		ACharacter::StopAnimMontage(attackMontage);
 		GetCharacterMovement()->SetMovementMode(MOVE_Walking);
@@ -98,6 +99,11 @@ void AThirdPersonCharacter::AttackWaitingMinus()
 void AThirdPersonCharacter::ResetAttackWaiting()
 {
 	attackWaiting = 0;
+}
+
+void AThirdPersonCharacter::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("ATTACK!"));
 }
 
 void AThirdPersonCharacter::MoveForward(float Axis)
