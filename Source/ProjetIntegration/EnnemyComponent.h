@@ -16,11 +16,17 @@ public:
 	// Sets default values for this pawn's properties
 	AEnnemyComponent();
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 		int Health;
 
 	UFUNCTION(BlueprintCallable)
 		void TakeDamage(int damage);
+
+	UFUNCTION()
+		void Die();
+
+	UFUNCTION(BlueprintCallable)
+		int GetHealth() const { return Health; }
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

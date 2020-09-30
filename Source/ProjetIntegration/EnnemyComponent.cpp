@@ -17,6 +17,11 @@ void AEnnemyComponent::TakeDamage(int damage)
 	Health = Health - damage;
 }
 
+void AEnnemyComponent::Die()
+{
+	this->Destroy();
+}
+
 // Called when the game starts or when spawned
 void AEnnemyComponent::BeginPlay()
 {
@@ -29,7 +34,7 @@ void AEnnemyComponent::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	if (Health <= 0)
-		this->Destroy();
+		Die();
 }
 
 // Called to bind functionality to input

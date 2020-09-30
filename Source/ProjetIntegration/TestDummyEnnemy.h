@@ -14,7 +14,4 @@ class PROJETINTEGRATION_API ATestDummyEnnemy : public AEnnemyComponent
 {
 	GENERATED_BODY()
 	
-public: 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		UMeshComponent* mesh;
 };
