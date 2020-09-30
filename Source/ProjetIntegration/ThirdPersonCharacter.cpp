@@ -149,7 +149,7 @@ void AThirdPersonCharacter::UseWeapon()
 
 void AThirdPersonCharacter::attackAnim()
 {
-	if (weaponInUse) 
+	if (weaponInUse && !GetCharacterMovement()->IsFalling()) 
 	{
 		if (attackWaiting == 0)
 		{
